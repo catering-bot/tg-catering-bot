@@ -8,151 +8,178 @@ logging.basicConfig(level=logging.INFO)
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
 MENU = {
-    "канапе": [
-        ("Рисовый спонж с икрой летучей рыбы и крем-чиз из копченого угря", 201.6),
-        ("Угорь на рисовом спонже с унаги соусом", 283.5),
-        ("Тартар из лосося на крутоне", 214.2),
-        ("Слабосолёная сёмга с мини спаржей и крем-чизом", 252.0),
-        ("Гребешки с манго и соусом из лобстеров", 522.9),
-        ("Мини блинчики с икрой", 315.0),
-        ("Рулетик из ростбифа с артишоками и вялеными томатами", 390.6),
-        ("Митбол из говядины с паназиатским соусом", 163.8),
-        ("Сыр Бри с вяленной клюквой и фисташкой", 283.5),
-        ("Сырные шарики", 151.2),
-    ],
-    "тарталетки": [
-        ("Фило с тартаром из лосося в апельсиновом соусе", 214.2),
-        ("Фило с креветками и гуакамоле", 302.4),
-        ("Вонтон с тартаром из тунца с вялеными черри и киноа", 315.0),
-        ("Вонтон с тартаром из говядины и каперсами", 245.7),
-    ],
-    "брускетта": [
-        ("С подкопчённым лососем и артишоками", 277.2),
-        ("С мясом краба, гуакамоле и чёрными креветками", 441.0),
-        ("С ростбифом, спаржей и рукколой", 434.7),
-        ("С моцареллой, черри и зелёным базиликом", 264.6),
-        ("С жареными грибами и творожным муссом", 239.4),
-    ],
-    "салаты": [
-        ("Салат Цезарь с птицей и перепелиным яйцом", 793.8),
-        ("Салат Греческий с пряными травами", 793.8),
-        ("С лососем, брюссельской капустой и апельсиновым дрессингом", 806.4),
-        ("Салат с креветками, авокадо, рукколой и лимонной заправкой", 875.7),
-        ("Микс салата с томатами черри, рукколой, моцареллой", 724.5),
-    ],
-    "горячее_банкет": [
-        ("Чилийский сибас на гриле с картофельным пюре", 1800.0),
-        ("Филе из сёмги в апельсиновом маринаде с ризотто", 1140.0),
-        ("Ягнёнок на косточке с перечным соусом и беби картофелем", 1173.3),
-        ("Ростбиф с брусничным соусом и печёным беби картофелем", 1513.3),
-        ("Цыплёнок барбекю маринованный в травах и цедре апельсина", 1233.3),
-        ("Паэлья с морепродуктами", 1586.7),
-    ],
-    "bbq": [
-        ("Палтус на гриле", 973.3),
-        ("Шашлык из свинины", 280.0),
-        ("Баранина туша", 1086.7),
-        ("Вырезка говяжья", 713.3),
-        ("Цыплята в соусе тандури", 373.3),
-        ("Колбаски ассорти", 653.3),
-        ("Печёные овощи (картофель, свёкла, тыква, грибы)", 853.3),
-    ],
-    "десерты": [
-        ("Медовик", 166.7),
-        ("Панакота маракуйя", 335.6),
-        ("Красный бархат", 220.0),
-        ("Тирамису", 246.7),
-        ("Фрукты и ягоды в конверте", 486.7),
-    ],
-    "напитки": [
-        ("Лимонад домашний (1 литр)", 855.6),
-        ("Морс ягодный (1 литр)", 855.6),
-        ("Свежевыжатый сок апельсин", 555.6),
-        ("Чай в ассортименте", 127.8),
-        ("Артезианская вода 500мл", 133.3),
-    ],
+    "эконом": {
+        "канапе": [
+            ("Митбол из говядины с паназиатским соусом", 163.8),
+            ("Митбол из индейки с томатной сальсой", 151.2),
+            ("Сырные шарики", 151.2),
+            ("Фалафель с хумусом из фасоли", 144.9),
+            ("Томаты черри с моцареллой и соусом песто", 214.2),
+        ],
+        "брускетта": [
+            ("С моцареллой, черри и зелёным базиликом", 264.6),
+            ("С жареными грибами и творожным муссом", 239.4),
+            ("С баклажаном, брынзой и гранатом", 283.5),
+        ],
+        "салаты": [
+            ("Салат Цезарь с птицей и перепелиным яйцом", 793.8),
+            ("Салат Греческий с пряными травами", 793.8),
+            ("Салатный микс с печёной свёклой и брынзой", 617.4),
+        ],
+        "горячее": [
+            ("Цыплёнок барбекю маринованный в травах", 1233.3),
+            ("Овощи гриль со сливочным соусом", 466.7),
+            ("Паста Болоньезе", 880.0),
+        ],
+        "десерты": [
+            ("Медовик", 166.7),
+            ("Красный бархат", 220.0),
+            ("Фрукты на шпажке", 413.3),
+        ],
+        "напитки": [
+            ("Морс ягодный (1 литр)", 855.6),
+            ("Артезианская вода 500мл", 133.3),
+            ("Чай в ассортименте", 127.8),
+        ],
+    },
+    "стандарт": {
+        "канапе": [
+            ("Тартар из лосося на крутоне", 214.2),
+            ("Слабосолёная сёмга с мини спаржей и крем-чизом", 252.0),
+            ("Рулетик из ростбифа с артишоками", 390.6),
+            ("Сыр Бри с вяленной клюквой и фисташкой", 283.5),
+            ("Угорь на рисовом спонже с унаги соусом", 283.5),
+        ],
+        "тарталетки": [
+            ("Фило с тартаром из лосося", 214.2),
+            ("Фило с креветками и гуакамоле", 302.4),
+            ("Вонтон с тартаром из говядины и каперсами", 245.7),
+        ],
+        "брускетта": [
+            ("С подкопчённым лососем и артишоками", 277.2),
+            ("С ростбифом, спаржей и рукколой", 434.7),
+            ("С пармской ветчиной и грушей на гриле", 441.0),
+        ],
+        "салаты": [
+            ("С лососем, брюссельской капустой и апельсиновым дрессингом", 806.4),
+            ("Салат с креветками, авокадо и рукколой", 875.7),
+            ("Утиная грудка с нектарином гриль и кешью", 837.9),
+        ],
+        "горячее": [
+            ("Филе из сёмги в апельсиновом маринаде с ризотто", 1140.0),
+            ("Ягнёнок на косточке с перечным соусом", 1173.3),
+            ("Паэлья с морепродуктами", 1586.7),
+        ],
+        "десерты": [
+            ("Панакота маракуйя", 335.6),
+            ("Тирамису", 246.7),
+            ("Фрукты и ягоды в конверте", 486.7),
+        ],
+        "напитки": [
+            ("Лимонад домашний (1 литр)", 855.6),
+            ("Морс ягодный (1 литр)", 855.6),
+            ("Свежевыжатый сок апельсин", 555.6),
+        ],
+    },
+    "премиум": {
+        "канапе": [
+            ("Рисовый спонж с икрой летучей рыбы и крем-чиз из копченого угря", 201.6),
+            ("Гребешки с манго и соусом из лобстеров", 522.9),
+            ("Мини блинчики с икрой", 315.0),
+            ("Рулетик из пармской ветчины с яблоком и сыром дорблю", 441.0),
+            ("Тунец с чукой", 252.0),
+        ],
+        "тарталетки": [
+            ("Фило с тартаром из лосося в апельсиновом соусе", 214.2),
+            ("Вонтон с тартаром из тунца с вялеными черри и киноа", 315.0),
+            ("Фило с креветками и гуакамоле", 302.4),
+        ],
+        "брускетта": [
+            ("С мясом краба, гуакамоле и чёрными креветками", 441.0),
+            ("С ростбифом, спаржей и рукколой", 434.7),
+            ("С пармской ветчиной и грушей на гриле", 441.0),
+        ],
+        "салаты": [
+            ("Салат с креветками, авокадо и рукколой", 875.7),
+            ("Утиная грудка с нектарином гриль и кешью", 837.9),
+            ("Микс с артишоками, авокадо и лимонным песто", 819.0),
+        ],
+        "горячее": [
+            ("Чилийский сибас на гриле с картофельным пюре", 1800.0),
+            ("Ростбиф с брусничным соусом и беби картофелем", 1513.3),
+            ("Филе миньон с мятным кускусом и вишнёвым соусом", 1260.0),
+        ],
+        "десерты": [
+            ("Ягодная тарелка", 2520.0),
+            ("Панакота маракуйя", 335.6),
+            ("Тирамису", 246.7),
+        ],
+        "напитки": [
+            ("Лимонад домашний (1 литр)", 855.6),
+            ("Свежевыжатый сок апельсин", 555.6),
+            ("Свежевыжатый сок ананас", 750.0),
+        ],
+    },
 }
 
-FURSHET_SET = {
-    "канапе": 5,
-    "тарталетки": 2,
-    "брускетта": 2,
-    "салаты": 1,
-    "горячее_банкет": 1,
-    "десерты": 2,
-    "напитки": 3,
+PORTIONS = {
+    "фуршет": {"канапе": 5, "тарталетки": 2, "брускетта": 2, "салаты": 1, "горячее": 1, "десерты": 2, "напитки": 3},
+    "банкет": {"салаты": 1, "горячее": 1, "десерты": 2, "напитки": 3},
+    "bbq":    {"горячее": 3, "салаты": 1, "десерты": 1, "напитки": 3},
 }
 
-BANKET_SET = {
-    "салаты": 1,
-    "горячее_банкет": 1,
-    "десерты": 2,
-    "напитки": 3,
+CAT_NAMES = {
+    "канапе": "🫙 КАНАПЕ",
+    "тарталетки": "🥟 ТАРТАЛЕТКИ",
+    "брускетта": "🥖 БРУСКЕТТА",
+    "салаты": "🥗 САЛАТЫ",
+    "горячее": "🍖 ГОРЯЧЕЕ",
+    "десерты": "🍰 ДЕСЕРТЫ",
+    "напитки": "🥤 НАПИТКИ",
 }
 
-BBQ_SET = {
-    "bbq": 3,
-    "салаты": 1,
-    "десерты": 1,
-    "напитки": 3,
+BUDGET_LABELS = {
+    "эконом": "💚 Эконом (до 3,000 ₽/чел)",
+    "стандарт": "💛 Стандарт (3,000–6,000 ₽/чел)",
+    "премиум": "💎 Премиум (от 6,000 ₽/чел)",
 }
 
-TYPE, GUESTS, CONFIRM = range(3)
+TYPE, GUESTS, BUDGET, CONFIRM = range(4)
 
 
-def generate_menu(event_type: str, guests: int) -> str:
-    if event_type == "фуршет":
-        preset = FURSHET_SET
-        title = "🍽️ ФУРШЕТ"
-    elif event_type == "банкет":
-        preset = BANKET_SET
-        title = "🥂 БАНКЕТ"
-    else:
-        preset = BBQ_SET
-        title = "🔥 BBQ"
-
-    lines = [f"{title} на {guests} человек\n{'='*35}"]
+def generate_menu(event_type: str, guests: int, budget: str) -> str:
+    portions = PORTIONS.get(event_type, PORTIONS["фуршет"])
+    menu_items = MENU.get(budget, MENU["стандарт"])
+    type_labels = {"фуршет": "🍽️ ФУРШЕТ", "банкет": "🥂 БАНКЕТ", "bbq": "🔥 BBQ"}
+    title = type_labels.get(event_type, "🍽️ ФУРШЕТ")
+    lines = [f"{title} на {guests} человек", f"{BUDGET_LABELS[budget]}", "=" * 35]
     total = 0
-
-    cat_names = {
-        "канапе": "🫙 КАНАПЕ",
-        "тарталетки": "🥟 ТАРТАЛЕТКИ",
-        "брускетта": "🥖 БРУСКЕТТА",
-        "салаты": "🥗 САЛАТЫ",
-        "горячее_банкет": "🍖 ГОРЯЧЕЕ",
-        "bbq": "🔥 BBQ",
-        "десерты": "🍰 ДЕСЕРТЫ",
-        "напитки": "🥤 НАПИТКИ",
-    }
-
-    for category, portions_per_person in preset.items():
-        if category not in MENU:
+    for category, portions_per_person in portions.items():
+        if category not in menu_items:
             continue
-        lines.append(f"\n{cat_names.get(category, category.upper())}:")
-        items = MENU[category][:3]
-        for name, price_per_portion in items:
+        lines.append(f"\n{CAT_NAMES.get(category, category.upper())}:")
+        for name, price in menu_items[category][:3]:
             total_portions = portions_per_person * guests
-            cost = price_per_portion * total_portions
+            cost = price * total_portions
             total += cost
             lines.append(f"  • {name[:45]}")
-            lines.append(f"    {total_portions} порц. × {price_per_portion:.0f}₽ = {cost:,.0f}₽")
-
+            lines.append(f"    {total_portions} порц. × {price:.0f}₽ = {cost:,.0f}₽")
     lines.append(f"\n{'='*35}")
     lines.append(f"💰 ИТОГО: {total:,.0f} ₽")
     lines.append(f"👤 На 1 человека: {total/guests:,.0f} ₽")
-    lines.append(f"\n📞 Для заказа: info@slcatering.ru")
+    lines.append(f"\n📞 Для заказа:")
+    lines.append(f"📧 info@slcatering.ru")
     lines.append(f"☎️ +7 (926) 141-25-18")
     return "\n".join(lines)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["🍽️ Фуршет", "🥂 Банкет", "🔥 BBQ"]]
-    reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
     await update.message.reply_text(
         "👋 Добро пожаловать в SmiLe Event & Catering!\n\n"
         "Я помогу рассчитать меню и стоимость.\n\n"
         "Выберите тип мероприятия:",
-        reply_markup=reply_markup,
+        reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True),
     )
     return TYPE
 
@@ -169,7 +196,7 @@ async def get_type(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Пожалуйста выберите из предложенных вариантов.")
         return TYPE
     await update.message.reply_text(
-        f"Отлично! Тип: {context.user_data['type'].upper()}\n\n"
+        f"Тип: {context.user_data['type'].upper()}\n\n"
         "👥 Сколько гостей ожидается?\n(введите число, например: 50)",
         reply_markup=ReplyKeyboardRemove(),
     )
@@ -184,12 +211,32 @@ async def get_guests(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except ValueError:
         await update.message.reply_text("Пожалуйста введите число гостей (например: 50)")
         return GUESTS
-
     context.user_data["guests"] = guests
-    menu_text = generate_menu(context.user_data["type"], guests)
+    keyboard = [["💚 Эконом"], ["💛 Стандарт"], ["💎 Премиум"]]
+    await update.message.reply_text(
+        f"Гостей: {guests}\n\n💰 Выберите бюджет на человека:",
+        reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True),
+    )
+    return BUDGET
+
+
+async def get_budget(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.lower()
+    if "эконом" in text:
+        context.user_data["budget"] = "эконом"
+    elif "стандарт" in text:
+        context.user_data["budget"] = "стандарт"
+    elif "премиум" in text:
+        context.user_data["budget"] = "премиум"
+    else:
+        await update.message.reply_text("Пожалуйста выберите бюджет из предложенных вариантов.")
+        return BUDGET
+    menu_text = generate_menu(context.user_data["type"], context.user_data["guests"], context.user_data["budget"])
     keyboard = [["✅ Отправить заявку", "🔄 Начать заново"]]
-    reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
-    await update.message.reply_text(menu_text, reply_markup=reply_markup)
+    await update.message.reply_text(
+        menu_text,
+        reply_markup=ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True),
+    )
     return CONFIRM
 
 
@@ -209,19 +256,18 @@ async def confirm(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("До свидания! Напишите /start чтобы начать заново.",
-                                     reply_markup=ReplyKeyboardRemove())
+    await update.message.reply_text("До свидания! Напишите /start чтобы начать заново.", reply_markup=ReplyKeyboardRemove())
     return ConversationHandler.END
 
 
 def main():
     app = Application.builder().token(TOKEN).build()
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler("start", start),
-                      MessageHandler(filters.TEXT & ~filters.COMMAND, start)],
+        entry_points=[CommandHandler("start", start), MessageHandler(filters.TEXT & ~filters.COMMAND, start)],
         states={
-            TYPE: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_type)],
-            GUESTS: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_guests)],
+            TYPE:    [MessageHandler(filters.TEXT & ~filters.COMMAND, get_type)],
+            GUESTS:  [MessageHandler(filters.TEXT & ~filters.COMMAND, get_guests)],
+            BUDGET:  [MessageHandler(filters.TEXT & ~filters.COMMAND, get_budget)],
             CONFIRM: [MessageHandler(filters.TEXT & ~filters.COMMAND, confirm)],
         },
         fallbacks=[CommandHandler("cancel", cancel)],
